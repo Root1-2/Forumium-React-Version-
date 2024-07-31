@@ -1,18 +1,84 @@
 import { NavLink } from "react-router-dom";
-import Input from "./Input";
+import { useForm } from "react-hook-form";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 function SignUpForm() {
+  const { register, formState, getValues, handleSubmit } = useForm();
+  const { errors } = formState;
+
+  function onSubmit(data) {
+    console.log(data);
+  }
+
   return (
     <div className="p-5">
       <p className="mb-5 text-center text-xl font-semibold text-blue-500">
         Sign-Up Form
       </p>
-      <Input label={"Full Name"} type={"text"} />
-      <Input label={"Username"} type={"text"} />
-      <Input label={"Email Address"} type={"email"} />
-      <Input label={"Password"} type={"password"} />
-      <Input label={"Confirm Password"} type={"password"} />
-
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="Full Name"
+          type="text"
+          id="fullName"
+          {...register("fullName", {
+            required: "This Field is Required",
+          })}
+          error={errors.fullName}
+        />
+        <Input
+          label="Username"
+          type="text"
+          id="username"
+          {...register("username", { required: "This Field is Required" })}
+          error={errors.username}
+        />
+        <Input
+          label="Email Address"
+          type="email"
+          id="email"
+          error={errors.email}
+          {...register("email", {
+            required: "This Field is Required",
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Please provide a valid email",
+            },
+          })}
+        />
+        <Input
+          label={"Password"}
+          type={"password"}
+          id={"password"}
+          error={errors.password}
+          {...register("password", {
+            required: "This Field is Required",
+            minLength: {
+              value: 6,
+              message: "Password need minimum 8 character",
+            },
+          })}
+        />
+        <Input
+          label={"Confirm Password"}
+          type={"password"}
+          id={"passwordConfirm"}
+          error={errors.passwordConfirm}
+          {...register("passwordConfirm", {
+            required: "This Field is Required",
+            validate: (value) =>
+              value === getValues().password || "Passwords need to match",
+          })}
+        />
+        <div className="mb-5 flex justify-end">
+          <Button color={"blue"} type="submit">
+            Submit
+          </Button>
+          <Button color={"red"} type="reset">
+            Reset
+          </Button>
+        </div>
+      </form>
       <span>Already Have an Account?</span>
       <NavLink to="/login">
         <span className="ms-2 text-blue-600">Sign-In</span>
