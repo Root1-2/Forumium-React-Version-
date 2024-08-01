@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
 
-import AppLayout from "./components/AppLayout";
+import AppLayout from "./ui/AppLayout";
 
 import Homepage from "./pages/Homepage";
 import Profile from "./pages/Profile";
@@ -11,7 +11,7 @@ import Post from "./pages/Post";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
