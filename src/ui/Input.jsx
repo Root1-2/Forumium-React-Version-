@@ -31,7 +31,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
   error: PropTypes.object,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default Input;

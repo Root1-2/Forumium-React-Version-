@@ -4,9 +4,10 @@ import { useSignUp } from "../services/useSignUp";
 
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import SpinnerMini from "../ui/SpinnerMini";
 
 function SignUpForm() {
-  const { signUp, isPending } = useSignUp();
+  const { signUp, isLoading } = useSignUp();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
@@ -29,7 +30,7 @@ function SignUpForm() {
           label="Full Name"
           type="text"
           id="fullName"
-          disabled={isPending}
+          disabled={isLoading}
           {...register("fullName", {
             required: "This Field is Required",
           })}
@@ -39,7 +40,7 @@ function SignUpForm() {
           label="Username"
           type="text"
           id="username"
-          disabled={isPending}
+          disabled={isLoading}
           {...register("username", { required: "This Field is Required" })}
           error={errors.username}
         />
@@ -47,7 +48,7 @@ function SignUpForm() {
           label="Email Address"
           type="email"
           id="email"
-          disabled={isPending}
+          disabled={isLoading}
           error={errors.email}
           {...register("email", {
             required: "This Field is Required",
@@ -61,7 +62,7 @@ function SignUpForm() {
           label={"Password"}
           type={"password"}
           id={"password"}
-          disabled={isPending}
+          disabled={isLoading}
           error={errors.password}
           {...register("password", {
             required: "This Field is Required",
@@ -75,7 +76,7 @@ function SignUpForm() {
           label={"Confirm Password"}
           type={"password"}
           id={"passwordConfirm"}
-          disabled={isPending}
+          disabled={isLoading}
           error={errors.passwordConfirm}
           {...register("passwordConfirm", {
             required: "This Field is Required",
@@ -85,7 +86,7 @@ function SignUpForm() {
         />
         <div className="mb-5 flex justify-end">
           <Button color={"blue"} type="submit">
-            Submit
+            {!isLoading ? "Submit" : <SpinnerMini />}
           </Button>
           <Button color={"red"} type="reset">
             Reset

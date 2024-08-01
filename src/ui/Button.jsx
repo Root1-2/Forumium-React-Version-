@@ -13,13 +13,14 @@ const colorClasses = {
     "from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-purple-300 dark:focus:ring-purple-800",
 };
 
-function Button({ color, children, type }) {
+function Button({ color, children, type, disabled }) {
   const gradientClasses = colorClasses[color] || colorClasses.blue;
 
   return (
     <button
       type={type}
       className={`bg-gradient-to-r text-white ${gradientClasses} mb-2 me-2 rounded-lg px-5 py-2.5 text-center text-sm font-medium`}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -30,6 +31,7 @@ Button.propTypes = {
   color: PropTypes.oneOf(Object.keys(colorClasses)),
   children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default Button;
