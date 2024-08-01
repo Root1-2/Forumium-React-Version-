@@ -1,14 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useSignUp } from "../services/useSignUp";
+
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 
 function SignUpForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { signUp, isPending } = useSignUp();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ fullName, username, email, password }) {
+    signUp(
+      { fullName, username, email, password },
+      {
+        onSettled: reset(),
+      },
+    );
   }
 
   return (
@@ -21,6 +29,7 @@ function SignUpForm() {
           label="Full Name"
           type="text"
           id="fullName"
+          disabled={isPending}
           {...register("fullName", {
             required: "This Field is Required",
           })}
@@ -30,6 +39,7 @@ function SignUpForm() {
           label="Username"
           type="text"
           id="username"
+          disabled={isPending}
           {...register("username", { required: "This Field is Required" })}
           error={errors.username}
         />
@@ -37,6 +47,7 @@ function SignUpForm() {
           label="Email Address"
           type="email"
           id="email"
+          disabled={isPending}
           error={errors.email}
           {...register("email", {
             required: "This Field is Required",
@@ -50,12 +61,13 @@ function SignUpForm() {
           label={"Password"}
           type={"password"}
           id={"password"}
+          disabled={isPending}
           error={errors.password}
           {...register("password", {
             required: "This Field is Required",
             minLength: {
               value: 6,
-              message: "Password need minimum 8 character",
+              message: "Password need minimum 6 character",
             },
           })}
         />
@@ -63,6 +75,7 @@ function SignUpForm() {
           label={"Confirm Password"}
           type={"password"}
           id={"passwordConfirm"}
+          disabled={isPending}
           error={errors.passwordConfirm}
           {...register("passwordConfirm", {
             required: "This Field is Required",

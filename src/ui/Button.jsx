@@ -27,7 +27,7 @@ function Button({ color, children, type }) {
 }
 
 Button.propTypes = {
-  color: PropTypes.oneOf(Object.keys(colorClasses)).isRequired,
+  color: PropTypes.oneOf(Object.keys(colorClasses)),
   children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
 };

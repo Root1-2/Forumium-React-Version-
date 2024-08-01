@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevTools } from "react-query/devtools";
 import { Toaster } from "react-hot-toast";
 
 import AppLayout from "./components/AppLayout";
