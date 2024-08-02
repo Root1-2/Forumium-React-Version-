@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import PostDiscussion from "./pages/PostDiscussion";
+import CreatePost from "./pages/CreatePost";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,7 +39,9 @@ function App() {
             <Route path="homepage" element={<Homepage />} />
             <Route path="profile" element={<Profile />} />
             <Route path="setting" element={<Setting />} />
-            <Route path="post/:id" element={<Post />} />
+            <Route path="post/" element={<Post />} />
+            <Route path="post/:id" element={<PostDiscussion />} />
+            <Route path="post/new" element={<CreatePost />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
