@@ -11,15 +11,20 @@ const colorClasses = {
   pink: "from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-pink-300 dark:focus:ring-pink-800",
   purple:
     "from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-purple-300 dark:focus:ring-purple-800",
+  alternate:
+    "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 text-gray-900 border border-gray-300 hover:bg-gradient-to-br focus:ring-gray-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+  dark: "bg-gradient-to-r from-gray-800 via-gray-900 to-gray-900 text-white border border-gray-700 hover:bg-gradient-to-br focus:ring-gray-300 dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+  light:
+    "bg-gradient-to-r from-white via-gray-100 to-gray-200 text-gray-900 border border-gray-300 hover:bg-gradient-to-br focus:ring-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
 };
 
 function Button({ color, children, type, disabled }) {
-  const gradientClasses = colorClasses[color] || colorClasses.blue;
+  const buttonClasses = colorClasses[color] || colorClasses.blue;
 
   return (
     <button
       type={type}
-      className={`bg-gradient-to-r text-white ${gradientClasses} mb-2 me-2 rounded-lg px-5 py-2.5 text-center text-sm font-medium`}
+      className={`rounded-lg bg-gradient-to-r px-5 py-2.5 text-center text-sm font-medium ${buttonClasses} mb-2 me-2`}
       disabled={disabled}
     >
       {children}

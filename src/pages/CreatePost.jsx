@@ -1,5 +1,11 @@
+import TopicCreateForm from "../components/TopicCreateForm";
+
 function CreatePost() {
-  return <div></div>;
+  return (
+    <div className="mt-10">
+      <TopicCreateForm />
+    </div>
+  );
 }
 
 export default CreatePost;
