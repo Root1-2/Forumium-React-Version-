@@ -6,7 +6,7 @@ import Logout from "../components/Logout";
 function Header() {
   return (
     <header>
-      <nav className="border-gray-200 bg-blue-200 py-5 lg:px-6">
+      <nav className="border-gray-200 bg-blue-200 bg-transparent py-3 lg:px-6">
         <div className="flex flex-wrap items-center justify-between">
           <NavLink to="/homepage" className="flex items-center">
             <Logo />
