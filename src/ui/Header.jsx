@@ -1,22 +1,20 @@
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "./Logo";
+import Logout from "../components/Logout";
 
 function Header() {
   return (
     <header>
       <nav className="border-gray-200 bg-blue-200 py-5 lg:px-6">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between">
           <NavLink to="/homepage" className="flex items-center">
             <Logo />
           </NavLink>
           <div className="flex items-center lg:order-2">
-            <NavLink
-              to="/login"
-              className="mr-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 lg:px-5 lg:py-2.5"
-            >
-              Log in
-            </NavLink>
+            <div className="">
+              <Logout />
+            </div>
 
             <button
               data-collapse-toggle="mobile-menu-2"
