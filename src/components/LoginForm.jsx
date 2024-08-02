@@ -33,20 +33,23 @@ function LoginForm() {
         Login Form
       </p>
       <form onSubmit={handleSubmit}>
-        <Input
-          label={"Email Address"}
-          type={"email"}
-          defaultValue={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
-        />
-        <Input
-          label={"Password"}
-          type={"password"}
-          defaultValue={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={isLoading}
-        />
+        <div className="w-96">
+          <Input
+            label={"Email Address"}
+            type={"email"}
+            defaultValue={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+          />
+          <Input
+            label={"Password"}
+            type={"password"}
+            defaultValue={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
+          />
+        </div>
+
         <div className="flex justify-center py-3">
           <Button type="submit" disabled={isLoading}>
             {!isLoading ? "Login" : <SpinnerMini />}

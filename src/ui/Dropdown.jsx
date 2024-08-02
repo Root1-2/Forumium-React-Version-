@@ -37,11 +37,13 @@ const Dropdown = ({ children, label }) => {
         onClick={toggleDropdown}
       >
         {selectedLabel}
-        {isOpen ? (
-          <FaChevronUp className="ml-2 h-5 w-5" />
-        ) : (
-          <FaChevronDown className="ml-2 h-5 w-5" />
-        )}
+        <span
+          className={`ml-2 h-5 w-5 transition-transform duration-300 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        >
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        </span>
       </button>
 
       {isOpen && (
