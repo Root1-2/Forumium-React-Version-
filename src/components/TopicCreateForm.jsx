@@ -1,4 +1,6 @@
+import { useUser } from "../services/useUser";
 import { useForm } from "react-hook-form";
+
 import Dropdown from "../ui/Dropdown";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
@@ -6,9 +8,11 @@ import Button from "../ui/Button";
 function TopicCreateForm() {
   const { handleSubmit, register, formState, setValue } = useForm();
   const { errors } = formState;
+  const { user } = useUser();
+  const { userName } = user.user_metadata;
 
   function onSubmit(data) {
-    console.log(data);
+    console.log(userName);
   }
 
   return (
@@ -27,10 +31,10 @@ function TopicCreateForm() {
           <div className="mt-3 w-full">
             <Dropdown
               label="Choose Section"
-              name="section"
+              name="postSection"
               error={errors.section}
               setValue={setValue}
-              {...register("section", {
+              {...register("postSection", {
                 required: "This field is required",
               })}
             >
