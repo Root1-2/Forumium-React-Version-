@@ -1,7 +1,5 @@
-function Logo() {
-  return (
-    <img src="src/images/main-logo-transparent.png" className="" alt="logo" />
-  );
-}
+import logo from "../images/main-logo-transparent.png";
 
-export default Logo;
+export default function Logo() {
+  return <img src={logo} alt="logo" />;
+}
