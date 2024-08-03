@@ -4,11 +4,11 @@ import ButtonIcon from "../ui/ButtonIcon";
 import SpinnerMini from "../ui/SpinnerMini";
 
 export default function Logout() {
-  const { logout, isLoading } = useLogout();
+  const { logout, isPending } = useLogout();
 
   return (
-    <ButtonIcon disabled={isLoading} onClick={logout}>
-      {!isLoading ? (
+    <ButtonIcon disabled={isPending} onClick={logout}>
+      {!isPending ? (
         <HiArrowRightOnRectangle color="white" size={24} />
       ) : (
         <SpinnerMini />

@@ -9,7 +9,7 @@ import SpinnerMini from "../ui/SpinnerMini";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading } = useLogin();
+  const { login, isPending } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,20 +39,20 @@ function LoginForm() {
             type={"email"}
             defaultValue={email}
             onChange={(e) => setEmail(e.target.value)}
-            disabled={isLoading}
+            disabled={isPending}
           />
           <Input
             label={"Password"}
             type={"password"}
             defaultValue={password}
             onChange={(e) => setPassword(e.target.value)}
-            disabled={isLoading}
+            disabled={isPending}
           />
         </div>
 
         <div className="flex justify-center py-3">
-          <Button type="submit" disabled={isLoading}>
-            {!isLoading ? "Login" : <SpinnerMini />}
+          <Button type="submit" disabled={isPending}>
+            {!isPending ? "Login" : <SpinnerMini />}
           </Button>
         </div>
       </form>
