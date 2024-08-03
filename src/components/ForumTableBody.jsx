@@ -5,11 +5,7 @@ import Spinner from "../ui/Spinner";
 import ForumTableRow from "./ForumTableRow";
 
 function ForumTableBody() {
-  const {
-    isPending,
-    data: posts,
-    error,
-  } = useQuery({
+  const { isPending, data: posts } = useQuery({
     queryKey: ["posts"],
     queryFn: getPostsApi,
   });
