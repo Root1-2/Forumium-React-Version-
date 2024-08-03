@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../services/useUser";
-import Spinner from "./Spinner";
 import { useEffect } from "react";
+import Spinner from "./Spinner";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();

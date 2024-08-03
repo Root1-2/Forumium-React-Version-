@@ -13,3 +13,14 @@ export async function createPost(newPost) {
 
   return data;
 }
+
+export async function getPosts() {
+  const { data, error } = await supabase.from("posts").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Cabins could not be loaded");
+  }
+
+  return data;
+}
