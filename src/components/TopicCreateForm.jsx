@@ -1,18 +1,26 @@
 import { useUser } from "../services/useUser";
 import { useForm } from "react-hook-form";
+import { useCreatePost } from "../services/useCreatePost";
 
 import Dropdown from "../ui/Dropdown";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import SpinnerMini from "../ui/SpinnerMini";
 
 function TopicCreateForm() {
   const { handleSubmit, register, formState, setValue } = useForm();
   const { errors } = formState;
+
   const { user } = useUser();
-  const { userName } = user.user_metadata;
+  const { username } = user.user_metadata;
+
+  const { isPending, createPost } = useCreatePost();
 
   function onSubmit(data) {
-    console.log(userName);
+    const newPost = { ...data, postCreator: username };
+
+    console.log(newPost);
+    createPost(newPost);
   }
 
   return (
@@ -63,8 +71,8 @@ function TopicCreateForm() {
         </div>
 
         <div className="mt-10 flex justify-end">
-          <Button color="alternate" type="submit">
-            Post
+          <Button disabled={isPending} color="alternate" type="submit">
+            {!isPending ? "Post" : <SpinnerMini />}
           </Button>
         </div>
       </form>
