@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 function PostDiscussion() {
-  return <div></div>;
+  let { id } = useParams();
+  return <div>Page with id: {id}</div>;
 }
 
 export default PostDiscussion;
