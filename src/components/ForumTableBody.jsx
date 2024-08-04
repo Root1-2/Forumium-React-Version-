@@ -1,15 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPosts as getPostsApi } from "../services/apiPosts";
-
+import { usePosts } from "../services/usePosts";
 import Spinner from "../ui/Spinner";
 import ForumTableRow from "./ForumTableRow";
 
 function ForumTableBody() {
-  const { isPending, data: posts } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPostsApi,
-  });
-
+  const { isPending, posts } = usePosts();
   if (isPending)
     return (
       <div className="flex items-center justify-center">

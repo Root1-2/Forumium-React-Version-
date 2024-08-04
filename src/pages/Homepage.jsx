@@ -4,7 +4,7 @@ import Logo from "../ui/Logo";
 
 function Homepage() {
   return (
-    <div className="flex h-screen flex-wrap items-center justify-between px-20 pb-36">
+    <div className="flex h-screen flex-wrap items-center justify-between px-20 pb-52">
       {/* Left Content */}
       <div className="w-[50rem]">
         <Logo />

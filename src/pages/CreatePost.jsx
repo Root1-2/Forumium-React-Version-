@@ -2,7 +2,7 @@ import TopicCreateForm from "../components/TopicCreateForm";
 
 function CreatePost() {
   return (
-    <div className="mt-10">
+    <div>
       <TopicCreateForm />
     </div>
   );

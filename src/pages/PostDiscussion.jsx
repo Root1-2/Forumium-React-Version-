@@ -1,8 +1,15 @@
 import { useParams } from "react-router-dom";
 
+import PostContent from "../components/PostContent";
+import PostReplies from "../components/PostReplies";
+
 function PostDiscussion() {
-  let { id } = useParams();
-  return <div>Page with id: {id}</div>;
+  return (
+    <div className="flex justify-center">
+      <PostContent />
+      <PostReplies />
+    </div>
+  );
 }
 
 export default PostDiscussion;

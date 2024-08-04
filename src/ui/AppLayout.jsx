@@ -5,7 +5,9 @@ function AppLayout() {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className="m-7">
+        <Outlet />
+      </div>
     </div>
   );
 }

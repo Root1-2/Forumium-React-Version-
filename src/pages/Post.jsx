@@ -1,7 +1,7 @@
 import { FaPlus } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import ForumTable from "../components/ForumTable";
 import ButtonIcon from "../ui/ButtonIcon";
-import { NavLink } from "react-router-dom";
 
 function Post() {
   return (
