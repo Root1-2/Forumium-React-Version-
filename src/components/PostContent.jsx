@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
 import { usePosts } from "../services/usePosts";
+import Spinner from "../ui/Spinner";
 
 function PostContent() {
   let { id } = useParams();
 
   const { isPending, posts } = usePosts(id);
   console.log(posts);
+
+  if (isPending) return <Spinner />;
 
   return (
     <div className="w-full rounded-lg border border-none bg-gray-700">

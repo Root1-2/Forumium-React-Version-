@@ -3,7 +3,7 @@ import { getCurrentUser } from "./apiAuth";
 
 export function useUser() {
   const queryClient = useQueryClient();
-  const { isLoading, data: user } = useQuery({
+  const { isPending, data: user } = useQuery({
     queryKey: ["user"],
     queryFn: getCurrentUser,
     onSuccess: (userData) => {
@@ -12,5 +12,5 @@ export function useUser() {
     staleTime: Infinity,
   });
 
-  return { isLoading, user, isAuthenticated: user?.role === "authenticated" };
+  return { isPending, user, isAuthenticated: user?.role === "authenticated" };
 }

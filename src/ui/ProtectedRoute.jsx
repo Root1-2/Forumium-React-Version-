@@ -6,16 +6,16 @@ import Spinner from "./Spinner";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading } = useUser();
+  const { isAuthenticated, isPending } = useUser();
 
   useEffect(
     function () {
-      if (!isAuthenticated && !isLoading) navigate("/login");
+      if (!isAuthenticated && !isPending) navigate("/login");
     },
-    [isAuthenticated, isLoading, navigate],
+    [isAuthenticated, isPending, navigate],
   );
 
-  if (isLoading)
+  if (isPending)
     return (
       <div className="flex h-screen items-center justify-center bg-gradient-to-r from-black">
         <Spinner />
