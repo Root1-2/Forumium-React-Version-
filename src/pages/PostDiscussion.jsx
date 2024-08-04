@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom";
-
 import PostContent from "../components/PostContent";
 import PostReplies from "../components/PostReplies";
 
