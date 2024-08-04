@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
+import { usePosts } from "../services/usePosts";
 
 function PostContent() {
   let { id } = useParams();
-  //   console.log(id);
+
+  const { isPending, posts } = usePosts(id);
+  console.log(posts);
 
   return (
     <div className="w-full rounded-lg border border-none bg-gray-700">
