@@ -14,7 +14,7 @@ function Header() {
             </NavLink>
           </div>
 
-          <div className="flex items-center lg:order-2">
+          <div className="flex flex-row-reverse items-center gap-10 lg:order-2">
             <div
               className="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
               id="mobile-menu-2"
@@ -26,6 +26,14 @@ function Header() {
                     className="lg:hover:text-primary-700 block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent lg:dark:hover:text-white"
                   >
                     Forums
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/post"
+                    className="lg:hover:text-primary-700 block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent lg:dark:hover:text-white"
+                  >
+                    About
                   </NavLink>
                 </li>
               </ul>
