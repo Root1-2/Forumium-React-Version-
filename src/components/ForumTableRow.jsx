@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { timeModified } from "../helper/timeModified";
 import PropTypes from "prop-types";
 
 export default function ForumTableRow({ post }) {
@@ -20,7 +21,7 @@ export default function ForumTableRow({ post }) {
         {postName}
       </th>
       <td className="px-6 py-4">{postCreator}</td>
-      <td className="px-6 py-4">{created_at}</td>
+      <td className="px-6 py-4">{timeModified(created_at)}</td>
       <td className="px-6 py-4">{postSection}</td>
     </tr>
   );
