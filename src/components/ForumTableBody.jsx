@@ -4,6 +4,7 @@ import ForumTableRow from "./ForumTableRow";
 
 function ForumTableBody() {
   const { isPending, posts } = usePosts();
+
   if (isPending)
     return (
       <div className="flex items-center justify-center">

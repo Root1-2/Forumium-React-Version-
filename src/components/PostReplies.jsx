@@ -15,7 +15,7 @@ function PostReplies() {
   }
 
   if (!replies || replies.length === 0) {
-    return <div>No replies found.</div>;
+    return null;
   }
 
   return (

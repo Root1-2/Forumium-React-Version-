@@ -1,18 +1,15 @@
 import supabase from "./supabase";
 
-export async function getReply({ postId }) {
-  console.log("Fetching replies for postId:", postId);
-
-  let { data: replies, error } = await supabase
+export async function getReply(id) {
+  let { data, error } = await supabase
     .from("replies")
     .select("*")
-    .eq("postId", postId);
+    .eq("postId", id);
 
   if (error) {
-    console.error("Error fetching replies:", error);
+    console.log(error);
     throw new Error("Replies could not be fetched");
   }
 
-  console.log("Fetched replies:", replies);
-  return { replies };
+  return data;
 }

@@ -1,17 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getReply as getReplyApi } from "../services/apiReply";
+import { getReply as getReplyApi } from "./apiReply";
 
-export function useReply(postId) {
-  const { data, error, isPending } = useQuery({
-    queryKey: ["replies", postId],
-    queryFn: () => getReplyApi({ postId }),
+export function useReply(id) {
+  const { isPending, data: replies } = useQuery({
+    queryKey: ["reply", id],
+    queryFn: () => getReplyApi(id),
   });
-
-  if (error) {
-    console.error("Error fetching replies with react-query:", error);
-  }
-
-  const replies = data ? data.replies : [];
 
   return { isPending, replies };
 }
