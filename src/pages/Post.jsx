@@ -15,7 +15,7 @@ function Post() {
       <div className="fixed bottom-0 right-0 h-20 w-20">
         <NavLink to="/post/new">
           <ButtonIcon>
-            <FaPlus color="white" />
+            <FaPlus color="white" size={20} />
           </ButtonIcon>
         </NavLink>
       </div>

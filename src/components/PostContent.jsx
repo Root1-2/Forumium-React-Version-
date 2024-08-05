@@ -1,14 +1,9 @@
-import { useParams } from "react-router-dom";
-import { usePosts } from "../services/usePosts";
 import { timeModified } from "../helper/timeModified";
+import PropTypes from "prop-types";
 
 import Spinner from "../ui/Spinner";
 
-function PostContent() {
-  let { id } = useParams();
-
-  const { isPending, posts } = usePosts(id);
-
+export default function PostContent({ isPending, posts }) {
   if (isPending) return <Spinner />;
 
   const post = posts[0];
@@ -40,4 +35,7 @@ function PostContent() {
   );
 }
 
-export default PostContent;
+PostContent.propTypes = {
+  isPending: PropTypes.bool,
+  posts: PropTypes.object,
+};

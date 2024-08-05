@@ -1,12 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useReply } from "../services/useReply";
 import Spinner from "../ui/Spinner";
 import EachReply from "./EachReply";
+import PropTypes from "prop-types";
 
-function PostReplies() {
-  let { id } = useParams();
-  const { isPending, replies } = useReply(id);
-
+export default function PostReplies({ isPending, replies }) {
   if (isPending) {
     return (
       <div>
@@ -28,4 +24,7 @@ function PostReplies() {
   );
 }
 
-export default PostReplies;
+PostReplies.propTypes = {
+  isPending: PropTypes.bool,
+  replies: PropTypes.object,
+};
