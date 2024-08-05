@@ -8,10 +8,8 @@ function PostContent() {
 
   const { isPending, posts } = usePosts(id);
 
-  // Show spinner while loading
   if (isPending) return <Spinner />;
 
-  // Destructure the first (and only) post from the posts array
   const post = posts[0];
   const { created_at, postName, postSection, postContent, postCreator } = post;
 
@@ -34,7 +32,7 @@ function PostContent() {
       </div>
       {/* Post Body */}
       <div className="rounded-b-lg bg-gray-500 px-6 py-3">
-        <p>{postContent}</p>
+        <p className="break-words">{postContent}</p>
         <div className="mt-5 flex justify-end">Icons</div>
       </div>
     </div>
