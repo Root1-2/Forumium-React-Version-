@@ -19,7 +19,6 @@ function TopicCreateForm() {
   function onSubmit(data) {
     const newPost = { ...data, postCreator: username };
 
-    // console.log(newPost);
     createPost(newPost);
   }
 

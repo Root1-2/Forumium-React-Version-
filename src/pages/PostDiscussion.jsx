@@ -20,10 +20,12 @@ function PostDiscussion() {
   }
 
   return (
-    <div className="relative overflow-y-auto">
-      <div className="mx-8 flex flex-col justify-center gap-8 overflow-y-auto">
+    <>
+      <div className="mx-8 flex flex-col justify-center gap-8">
         <PostContent isPending={postLoading} posts={posts} />
-        <PostReplies isPending={replyLoading} replies={replies} />
+        <div className="max-h-[calc(100vh-20rem)] overflow-auto">
+          <PostReplies isPending={replyLoading} replies={replies} />
+        </div>
       </div>
 
       <div className="fixed bottom-0 right-0 z-40 h-20 w-20">
@@ -32,8 +34,12 @@ function PostDiscussion() {
         </ButtonIcon>
       </div>
 
-      <ReplyForm id={id} isVisible={isReplyFormVisible} />
-    </div>
+      <ReplyForm
+        id={id}
+        isVisible={isReplyFormVisible}
+        onSuccess={() => setReplyFormVisible(false)}
+      />
+    </>
   );
 }
 
