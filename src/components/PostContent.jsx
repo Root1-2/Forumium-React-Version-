@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { usePosts } from "../services/usePosts";
-import Spinner from "../ui/Spinner";
 import { timeModified } from "../helper/timeModified";
+
+import Spinner from "../ui/Spinner";
 
 function PostContent() {
   let { id } = useParams();

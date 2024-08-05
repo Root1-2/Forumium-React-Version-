@@ -3,7 +3,7 @@ import PostReplies from "../components/PostReplies";
 
 function PostDiscussion() {
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col justify-center gap-8">
       <PostContent />
       <PostReplies />
     </div>
