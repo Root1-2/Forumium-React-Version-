@@ -37,5 +37,5 @@ export default function PostContent({ isPending, posts }) {
 
 PostContent.propTypes = {
   isPending: PropTypes.bool,
-  posts: PropTypes.object,
+  posts: PropTypes.array,
 };

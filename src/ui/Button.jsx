@@ -18,11 +18,12 @@ const colorClasses = {
     "bg-gradient-to-r from-white via-gray-100 to-gray-200 text-gray-900 border border-gray-300 hover:bg-gradient-to-br focus:ring-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
 };
 
-function Button({ color, children, type, disabled }) {
+function Button({ color, children, type, disabled, onClick }) {
   const buttonClasses = colorClasses[color] || colorClasses.blue;
 
   return (
     <button
+      onClick={onClick}
       type={type}
       className={`rounded-lg bg-gradient-to-r px-5 py-2.5 text-center text-sm font-medium ${buttonClasses} mb-2 me-2`}
       disabled={disabled}
@@ -35,8 +36,9 @@ function Button({ color, children, type, disabled }) {
 Button.propTypes = {
   color: PropTypes.oneOf(Object.keys(colorClasses)),
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Button;

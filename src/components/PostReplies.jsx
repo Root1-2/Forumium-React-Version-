@@ -26,5 +26,5 @@ export default function PostReplies({ isPending, replies }) {
 
 PostReplies.propTypes = {
   isPending: PropTypes.bool,
-  replies: PropTypes.object,
+  replies: PropTypes.array,
 };

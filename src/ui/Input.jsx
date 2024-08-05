@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 
 const Input = forwardRef(
-  ({ label, type, id, disabled, error, ...rest }, ref) => {
+  ({ label, type, id, disabled, rows = 8, error, ...rest }, ref) => {
     const baseClassName = `dark:text-dark peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-5 text-lg text-gray-300 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-blue-500`;
 
     const commonProps = {
@@ -11,6 +11,7 @@ const Input = forwardRef(
       ref,
       disabled,
       ...rest,
+      rows,
     };
 
     return (
@@ -20,7 +21,7 @@ const Input = forwardRef(
             {...commonProps}
             className={baseClassName}
             placeholder=" "
-            rows={8}
+            rows={rows}
           />
         ) : (
           <input
@@ -47,6 +48,7 @@ Input.propTypes = {
   id: PropTypes.string,
   error: PropTypes.object,
   disabled: PropTypes.bool,
+  rows: PropTypes.number,
 };
 
 export default Input;
