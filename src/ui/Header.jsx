@@ -30,7 +30,7 @@ function Header() {
                 </li>
                 <li>
                   <NavLink
-                    to="/post"
+                    // to="/post"
                     className="lg:hover:text-primary-700 block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent lg:dark:hover:text-white"
                   >
                     About
