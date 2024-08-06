@@ -15,8 +15,6 @@ export async function getReply(id) {
 }
 
 export async function createEditReply(replyData, id) {
-  console.log(replyData);
-  console.log(id);
   let query = supabase.from("replies");
   if (!id) {
     query = query.insert([replyData[0]]).select();
@@ -25,6 +23,20 @@ export async function createEditReply(replyData, id) {
   }
 
   const { data, error } = await query.single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Insertion Failed");
+  }
+
+  return data;
+}
+
+export async function deleteReply(replyId) {
+  const { data, error } = await supabase
+    .from("replies")
+    .delete()
+    .eq("id", replyId);
 
   if (error) {
     console.error(error);

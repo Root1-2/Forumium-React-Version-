@@ -3,8 +3,10 @@ import { useUser } from "../services/useUser";
 import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
+import { useReplyDelete } from "../services/useReplyDelete";
 import PropTypes from "prop-types";
 import ReplyForm from "./ReplyForm";
+import ConfirmDelete from "../ui/ConfirmDelete";
 
 export default function EachReply({ reply }) {
   let { id } = useParams();
@@ -12,9 +14,21 @@ export default function EachReply({ reply }) {
   const { user } = useUser();
   const { username } = user.user_metadata;
   const [isReplyFormVisible, setReplyFormVisible] = useState(false);
+  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
+
+  const { replyDelete } = useReplyDelete();
 
   function handleEdit() {
     setReplyFormVisible(!isReplyFormVisible);
+  }
+
+  function handleDelete() {
+    setDeleteModalVisible(true);
+  }
+
+  function handleConfirmDelete() {
+    replyDelete(reply.id);
+    setDeleteModalVisible(false);
   }
 
   return (
@@ -37,7 +51,7 @@ export default function EachReply({ reply }) {
         {username === reply.replier && (
           <div className="mt-5 flex justify-end gap-5">
             <FiEdit2 cursor={"pointer"} onClick={handleEdit} />
-            <FaRegTrashCan cursor={"pointer"} onClick={handleEdit} />
+            <FaRegTrashCan cursor={"pointer"} onClick={handleDelete} />
           </div>
         )}
       </div>
@@ -49,6 +63,13 @@ export default function EachReply({ reply }) {
         onSuccess={handleEdit}
         isEdit={true}
       />
+      {isDeleteModalVisible && (
+        <ConfirmDelete
+          resourceName="reply"
+          onConfirm={handleConfirmDelete}
+          onCloseModal={() => setDeleteModalVisible(false)}
+        />
+      )}
     </div>
   );
 }
