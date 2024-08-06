@@ -65,7 +65,7 @@ export default function EachReply({ reply }) {
       />
       {isDeleteModalVisible && (
         <ConfirmDelete
-          resourceName="reply"
+          typeName="reply"
           onConfirm={handleConfirmDelete}
           onCloseModal={() => setDeleteModalVisible(false)}
         />

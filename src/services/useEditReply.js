@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 export function useEditReply() {
   const queryClient = useQueryClient();
 
-  const { mutate: editReply, isLoading: isEditPending } = useMutation({
+  const { mutate: editReply, isPending } = useMutation({
     mutationFn: ({ replyData, id }) => createEditReplyApi(replyData, id),
     onSuccess: () => {
       toast.success("Reply Edited Successfully");
@@ -18,5 +18,5 @@ export function useEditReply() {
     },
   });
 
-  return { editReply, isEditPending };
+  return { editReply, isPending };
 }
