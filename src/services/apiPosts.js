@@ -43,7 +43,6 @@ export async function deletePost(id) {
     throw new Error("Failed to fetch replies");
   }
 
-  // If replies exist, delete them
   if (replies.length > 0) {
     const { error: deleteRepliesError } = await supabase
       .from("replies")
