@@ -3,7 +3,7 @@ import { useUser } from "../services/useUser";
 import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
-import { useReplyDelete } from "../services/useReplyDelete";
+import { useDeleteReply } from "../services/useDeleteReply";
 import PropTypes from "prop-types";
 import ReplyForm from "./ReplyForm";
 import ConfirmDelete from "../ui/ConfirmDelete";
@@ -16,7 +16,7 @@ export default function EachReply({ reply }) {
   const [isReplyFormVisible, setReplyFormVisible] = useState(false);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
 
-  const { replyDelete } = useReplyDelete();
+  const replyDelete = useDeleteReply();
 
   function handleEdit() {
     setReplyFormVisible(!isReplyFormVisible);

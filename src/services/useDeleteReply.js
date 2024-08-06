@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteReply as deleteReplyApi } from "./apiReply";
 import toast from "react-hot-toast";
 
-export function useReplyDelete() {
+export function useDeleteReply() {
   const queryClient = useQueryClient();
 
   const { mutate: replyDelete } = useMutation({
@@ -16,5 +16,5 @@ export function useReplyDelete() {
     onError: (err) => toast.error(err.message),
   });
 
-  return { replyDelete };
+  return replyDelete;
 }

@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import Button from "../ui/Button";
+import SpinnerMini from "./SpinnerMini";
 
-export default function ConfirmDelete({ onConfirm, typeName, onCloseModal }) {
+export default function ConfirmDelete({
+  onConfirm,
+  typeName,
+  onCloseModal,
+  isPending,
+}) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="w-96 rounded-lg bg-gray-700 p-6 shadow-lg">
@@ -15,7 +21,7 @@ export default function ConfirmDelete({ onConfirm, typeName, onCloseModal }) {
             Cancel
           </Button>
           <Button color="dark" onClick={onConfirm}>
-            Delete
+            {!isPending ? "Delete" : <SpinnerMini />}
           </Button>
         </div>
       </div>
@@ -27,4 +33,5 @@ ConfirmDelete.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   typeName: PropTypes.string.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  isPending: PropTypes.bool,
 };

@@ -8,7 +8,7 @@ export async function createPost(newPost) {
 
   if (error) {
     console.log(error);
-    throw new Error("Cabin could not be created");
+    throw new Error("Post could not be created");
   }
 
   return data;
@@ -25,7 +25,42 @@ export async function getPosts({ id = null }) {
 
   if (error) {
     console.error(error);
-    throw new Error("Cabins could not be loaded");
+    throw new Error("Posts could not be loaded");
+  }
+
+  return data;
+}
+
+export async function deletePost(id) {
+  // First checking if replies exist for that post
+  const { data: replies, error: repliesError } = await supabase
+    .from("replies")
+    .select("id")
+    .eq("postId", id);
+
+  if (repliesError) {
+    console.error(repliesError);
+    throw new Error("Failed to fetch replies");
+  }
+
+  // If replies exist, delete them
+  if (replies.length > 0) {
+    const { error: deleteRepliesError } = await supabase
+      .from("replies")
+      .delete()
+      .eq("postId", id);
+
+    if (deleteRepliesError) {
+      console.error(deleteRepliesError);
+      throw new Error("Replies could not be deleted");
+    }
+  }
+
+  const { data, error } = await supabase.from("posts").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Posts could not be deleted");
   }
 
   return data;
