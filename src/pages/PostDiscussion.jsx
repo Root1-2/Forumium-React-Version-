@@ -10,6 +10,7 @@ import ReplyForm from "../components/ReplyForm";
 
 function PostDiscussion() {
   let { id } = useParams();
+  id = +id;
   const [isReplyFormVisible, setReplyFormVisible] = useState(false);
 
   const { isPending: postLoading, posts } = usePosts(id);
@@ -35,7 +36,7 @@ function PostDiscussion() {
       </div>
 
       <ReplyForm
-        id={id}
+        postId={id}
         isVisible={isReplyFormVisible}
         onSuccess={() => setReplyFormVisible(false)}
       />

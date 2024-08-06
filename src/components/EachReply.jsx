@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useUser } from "../services/useUser";
 import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import ReplyForm from "./ReplyForm";
 
 export default function EachReply({ reply }) {
+  let { id } = useParams();
+  id = +id;
   const { user } = useUser();
   const { username } = user.user_metadata;
   const [isReplyFormVisible, setReplyFormVisible] = useState(false);
@@ -39,7 +42,8 @@ export default function EachReply({ reply }) {
         )}
       </div>
       <ReplyForm
-        id={reply.id}
+        replyid={reply.id}
+        postId={id}
         isVisible={isReplyFormVisible}
         replyContent={reply.replyContent}
         onSuccess={handleEdit}

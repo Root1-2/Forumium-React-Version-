@@ -9,10 +9,11 @@ import PropTypes from "prop-types";
 
 export default function ReplyForm({
   isVisible,
-  id,
+  postId,
   replyContent,
   onSuccess,
   isEdit,
+  replyid,
 }) {
   const { user } = useUser();
   const { username } = user.user_metadata;
@@ -30,16 +31,19 @@ export default function ReplyForm({
     const replyData = {
       replier: username,
       replyContent: content,
-      postId: id,
+      postId: postId,
     };
 
     if (isEdit) {
-      editReply([replyData], {
-        onSuccess: () => {
-          setContent("");
-          if (onSuccess) onSuccess();
+      editReply(
+        { replyData, id: replyid },
+        {
+          onSuccess: () => {
+            setContent("");
+            if (onSuccess) onSuccess();
+          },
         },
-      });
+      );
     } else {
       createReply([replyData], {
         onSuccess: () => {
@@ -87,7 +91,8 @@ export default function ReplyForm({
 
 ReplyForm.propTypes = {
   isVisible: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  postId: PropTypes.number.isRequired,
+  replyid: PropTypes.number,
   replyContent: PropTypes.string,
   onSuccess: PropTypes.func.isRequired,
   isEdit: PropTypes.bool,

@@ -14,24 +14,22 @@ export async function getReply(id) {
   return data;
 }
 
-export async function createReply(replyData) {
-  const { data, error } = await supabase
-    .from("replies")
-    .insert([replyData[0]])
-    .select();
+export async function createEditReply(replyData, id) {
+  console.log(replyData);
+  console.log(id);
+  let query = supabase.from("replies");
+  if (!id) {
+    query = query.insert([replyData[0]]).select();
+  } else {
+    query = query.update(replyData).eq("id", id);
+  }
+
+  const { data, error } = await query.single();
 
   if (error) {
     console.error(error);
-    throw new Error("Reply Failed");
+    throw new Error("Insertion Failed");
   }
 
   return data;
-}
-
-export async function editReply(replyData) {
-  const { data, error } = await supabase
-    .from("replies")
-    .update([replyData[0]])
-    .eq("id", "someValue")
-    .select();
 }
