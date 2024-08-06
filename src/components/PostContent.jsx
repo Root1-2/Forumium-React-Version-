@@ -54,7 +54,7 @@ export default function PostContent({ isPending, posts }) {
       </div>
       {/* Post Body */}
       <div className="rounded-b-lg bg-gray-500 px-6 py-3">
-        <p className="break-words">{postContent}</p>
+        <p className="whitespace-pre-line break-words">{postContent}</p>
         {username === postCreator && (
           <div className="mt-5 flex justify-end gap-5">
             <FiEdit2 cursor={"pointer"} onClick={handleEdit} />
