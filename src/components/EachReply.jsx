@@ -47,7 +47,7 @@ export default function EachReply({ reply }) {
         </div>
       </div>
       <div className="rounded-b-lg bg-gray-500 px-6 py-3">
-        <p className="break-words">{reply.replyContent}</p>
+        <p className="whitespace-pre break-words">{reply.replyContent}</p>
         {username === reply.replier && (
           <div className="mt-5 flex justify-end gap-5">
             <FiEdit2 cursor={"pointer"} onClick={handleEdit} />
