@@ -4,8 +4,8 @@ import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import { useDeleteReply } from "../services/useDeleteReply";
+import { timeModified } from "../helper/timeModified";
 
-import timeModified from "../helper/timeModified";
 import PropTypes from "prop-types";
 import ReplyForm from "./ReplyForm";
 import ConfirmDelete from "../ui/ConfirmDelete";
