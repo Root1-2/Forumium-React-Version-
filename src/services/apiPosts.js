@@ -1,10 +1,15 @@
 import supabase from "./supabase";
 
-export async function createPost(newPost) {
-  const { data, error } = await supabase
-    .from("posts")
-    .insert([newPost])
-    .select();
+export async function createEditPost(newPost, id) {
+  let query = supabase.from("posts");
+
+  if (!id) {
+    query = query.insert([newPost]).select();
+  } else {
+    query = query.update([newPost]).eq("id", id);
+  }
+
+  const { data, error } = await query.single();
 
   if (error) {
     console.log(error);

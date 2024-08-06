@@ -2,6 +2,8 @@ import { useUser } from "../services/useUser";
 import { useState, useEffect } from "react";
 import { useCreateReply } from "../services/useCreateReply";
 import { useEditReply } from "../services/useEditReply";
+import { useEditPost } from "../services/useEditPost";
+
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import SpinnerMini from "../ui/SpinnerMini";
@@ -14,11 +16,16 @@ export default function ReplyForm({
   onSuccess,
   isEdit,
   replyid,
+  postName,
+  postSection,
 }) {
   const { user } = useUser();
   const { username } = user.user_metadata;
+
   const { isPending: isCreatePending, createReply } = useCreateReply();
   const { isPending: isEditPending, editReply } = useEditReply();
+  const { isPending: isEditingPost, editPost } = useEditPost();
+
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -28,15 +35,16 @@ export default function ReplyForm({
   }, [replyContent]);
 
   function handleSubmit() {
-    const replyData = {
-      replier: username,
-      replyContent: content,
-      postId: postId,
-    };
+    if (postName) {
+      const postData = {
+        postCreator: username,
+        postContent: content,
+        postName: postName,
+        postSection: postSection,
+      };
 
-    if (isEdit) {
-      editReply(
-        { replyData, id: replyid },
+      editPost(
+        { postData, id: postId },
         {
           onSuccess: () => {
             setContent("");
@@ -45,12 +53,30 @@ export default function ReplyForm({
         },
       );
     } else {
-      createReply([replyData], {
-        onSuccess: () => {
-          setContent("");
-          if (onSuccess) onSuccess();
-        },
-      });
+      const replyData = {
+        replier: username,
+        replyContent: content,
+        postId: postId,
+      };
+
+      if (isEdit) {
+        editReply(
+          { replyData, id: replyid },
+          {
+            onSuccess: () => {
+              setContent("");
+              if (onSuccess) onSuccess();
+            },
+          },
+        );
+      } else {
+        createReply([replyData], {
+          onSuccess: () => {
+            setContent("");
+            if (onSuccess) onSuccess();
+          },
+        });
+      }
     }
   }
 
@@ -63,14 +89,16 @@ export default function ReplyForm({
       <div className="rounded-lg bg-gray-700 p-5">
         <Input
           type="textarea"
-          label="Reply your content here"
+          label={
+            isEdit ? "Update your content here" : "Reply your content here"
+          }
           rows={6}
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
         <div className="flex justify-center gap-2">
           <Button color="dark" onClick={handleSubmit}>
-            {!isCreatePending && !isEditPending ? (
+            {!isCreatePending && !isEditPending && !isEditingPost ? (
               isEdit ? (
                 "Update Reply"
               ) : (
@@ -96,4 +124,6 @@ ReplyForm.propTypes = {
   replyContent: PropTypes.string,
   onSuccess: PropTypes.func.isRequired,
   isEdit: PropTypes.bool,
+  postName: PropTypes.string,
+  postSection: PropTypes.string,
 };

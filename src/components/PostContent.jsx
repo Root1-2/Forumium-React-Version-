@@ -8,10 +8,12 @@ import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import ConfirmDelete from "../ui/ConfirmDelete";
 import Spinner from "../ui/Spinner";
+import ReplyForm from "./ReplyForm";
 
 export default function PostContent({ isPending, posts }) {
   const { user } = useUser();
   const { username } = user.user_metadata;
+  const [isReplyFormVisible, setReplyFormVisible] = useState(false);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const { deletePost, isPending: isDeleting } = useDeletePost();
 
@@ -20,7 +22,9 @@ export default function PostContent({ isPending, posts }) {
   const { created_at, postName, postSection, postContent, postCreator, id } =
     posts[0];
 
-  function handleEdit() {}
+  function handleEdit() {
+    setReplyFormVisible(!isReplyFormVisible);
+  }
 
   function handleDelete() {
     setDeleteModalVisible(true);
@@ -58,6 +62,15 @@ export default function PostContent({ isPending, posts }) {
           </div>
         )}
       </div>
+      <ReplyForm
+        postId={id}
+        isVisible={isReplyFormVisible}
+        replyContent={postContent}
+        onSuccess={handleEdit}
+        isEdit={true}
+        postName={postName}
+        postSection={postSection}
+      />
       {isDeleteModalVisible && (
         <ConfirmDelete
           isPending={isDeleting}
