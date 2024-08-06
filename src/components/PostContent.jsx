@@ -1,13 +1,17 @@
 import { timeModified } from "../helper/timeModified";
+import { useUser } from "../services/useUser";
 import PropTypes from "prop-types";
 
 import Spinner from "../ui/Spinner";
 
 export default function PostContent({ isPending, posts }) {
+  const { user } = useUser();
+  const { username } = user.user_metadata;
+
   if (isPending) return <Spinner />;
 
-  const post = posts[0];
-  const { created_at, postName, postSection, postContent, postCreator } = post;
+  const { created_at, postName, postSection, postContent, postCreator } =
+    posts[0];
 
   return (
     <div className="w-full rounded-lg border border-none bg-gray-700">
@@ -29,7 +33,9 @@ export default function PostContent({ isPending, posts }) {
       {/* Post Body */}
       <div className="rounded-b-lg bg-gray-500 px-6 py-3">
         <p className="break-words">{postContent}</p>
-        <div className="mt-5 flex justify-end">Icons</div>
+        {username === postCreator && (
+          <div className="mt-5 flex justify-end">Icons</div>
+        )}
       </div>
     </div>
   );

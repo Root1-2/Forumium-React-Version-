@@ -15,7 +15,6 @@ export async function getReply(id) {
 }
 
 export async function createReply(replyData) {
-  console.log(replyData);
   const { data, error } = await supabase
     .from("replies")
     .insert([replyData[0]])
@@ -27,4 +26,12 @@ export async function createReply(replyData) {
   }
 
   return data;
+}
+
+export async function editReply(replyData) {
+  const { data, error } = await supabase
+    .from("replies")
+    .update([replyData[0]])
+    .eq("id", "someValue")
+    .select();
 }
