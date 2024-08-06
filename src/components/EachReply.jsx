@@ -4,6 +4,8 @@ import { FiEdit2 } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import { useDeleteReply } from "../services/useDeleteReply";
+
+import timeModified from "../helper/timeModified";
 import PropTypes from "prop-types";
 import ReplyForm from "./ReplyForm";
 import ConfirmDelete from "../ui/ConfirmDelete";
@@ -41,9 +43,7 @@ export default function EachReply({ reply }) {
           {reply.replier}
         </p>
         <div>
-          <span className="ms-5 text-sm">
-            {new Date(reply.created_at).toLocaleString()}
-          </span>
+          <span className="ms-5 text-sm">{timeModified(reply.created_at)}</span>
         </div>
       </div>
       <div className="rounded-b-lg bg-gray-500 px-6 py-3">
