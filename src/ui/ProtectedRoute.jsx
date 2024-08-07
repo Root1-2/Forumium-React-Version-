@@ -6,6 +6,7 @@ import Spinner from "./Spinner";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
+
   const { isAuthenticated, isPending } = useUser();
 
   useEffect(

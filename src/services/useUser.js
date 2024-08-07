@@ -6,8 +6,8 @@ export function useUser() {
   const { isPending, data: user } = useQuery({
     queryKey: ["user"],
     queryFn: getCurrentUser,
-    onSuccess: (userData) => {
-      queryClient.setQueryData(["user"], userData);
+    onSuccess: (user) => {
+      queryClient.setQueryData(["user"], user.user);
     },
     staleTime: Infinity,
   });
