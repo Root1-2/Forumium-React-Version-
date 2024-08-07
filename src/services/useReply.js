@@ -19,7 +19,11 @@ export function useReply(id) {
       .channel("replies")
       .on(
         "postgres_changes",
-        { event: "*", table: "replies", filter: `postId=eq.${id}` },
+        {
+          event: "*",
+          table: "replies",
+          filter: `postId=eq.${id}`,
+        },
         () => refetch(),
       )
       .subscribe();
