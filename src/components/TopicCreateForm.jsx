@@ -24,7 +24,9 @@ function TopicCreateForm() {
 
   return (
     <div className="mx-24 rounded-lg bg-gray-800">
-      <p className="bg-gray-700 py-2 text-center text-2xl">Create Post</p>
+      <p className="rounded-t-lg bg-gray-700 py-2 text-center text-2xl">
+        Create Post
+      </p>
       <form className="px-20 py-10" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-5 flex justify-between gap-28">
           <Input
