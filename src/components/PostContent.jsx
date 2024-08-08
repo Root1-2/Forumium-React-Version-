@@ -38,7 +38,7 @@ export default function PostContent({ isPending, posts }) {
   return (
     <div className="w-full rounded-lg bg-gray-700">
       {/* Post Header */}
-      <div className="flex justify-between border-b border-gray-600 px-6 py-3">
+      <div className="flex justify-between rounded-lg border-b border-gray-600 px-6 py-3">
         <p className="font-semibold">
           <span className="text-lg font-semibold text-sky-100">
             {postCreator} :{" "}
