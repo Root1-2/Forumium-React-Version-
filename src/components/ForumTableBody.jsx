@@ -7,9 +7,13 @@ function ForumTableBody() {
 
   if (isPending)
     return (
-      <div className="flex items-center justify-center">
-        <Spinner />
-      </div>
+      <tbody>
+        <tr>
+          <td colSpan="4" className="flex items-center justify-center py-4">
+            <Spinner />
+          </td>
+        </tr>
+      </tbody>
     );
 
   return (
