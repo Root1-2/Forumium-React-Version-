@@ -3,6 +3,8 @@ import { getPosts as getPostsApi } from "./apiPosts";
 import { useEffect } from "react";
 import supabase from "./supabase";
 
+const x = 5;
+
 export function usePosts(id) {
   const {
     isPending,
