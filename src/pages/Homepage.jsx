@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import Button from "../ui/Button";
 import Logo from "../ui/Logo";
 
+import banner from "../images/bannerImg.png";
+
 function Homepage() {
   return (
     <div className="flex h-screen flex-wrap items-center justify-between px-20 pb-52">
@@ -23,7 +25,7 @@ function Homepage() {
 
       {/* Right Content */}
       <div>
-        <h1 className="text-3xl text-white">Image Content</h1>
+        <img src={banner} className="w-56" alt="banner" />
       </div>
     </div>
   );
