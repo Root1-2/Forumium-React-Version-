@@ -6,8 +6,7 @@ import banner from "../images/bannerImg.png";
 
 function Homepage() {
   return (
-    <div className="flex h-screen flex-wrap items-center justify-between px-20 pb-52">
-      {/* Left Content */}
+    <div className="flex h-screen flex-wrap items-center justify-between gap-10 overflow-y-auto px-0 pb-52 sm:gap-0 sm:px-20">
       <div className="w-[50rem]">
         <Logo />
         <h1 className="my-4 text-3xl font-semibold text-white sm:text-6xl">
@@ -23,9 +22,8 @@ function Homepage() {
         </NavLink>
       </div>
 
-      {/* Right Content */}
       <div>
-        <img src={banner} className="w-56" alt="banner" />
+        <img src={banner} className="ms-16 w-56 sm:ms-0" alt="banner" />
       </div>
     </div>
   );

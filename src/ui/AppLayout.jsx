@@ -5,7 +5,7 @@ function AppLayout() {
   return (
     <div>
       <Header />
-      <div className="m-7">
+      <div className="m-7 h-screen overflow-y-auto">
         <Outlet />
       </div>
     </div>
