@@ -35,19 +35,19 @@ export default function EachReply({ reply }) {
 
   return (
     <div className="mb-4">
-      <div className="flex justify-between px-6 py-3">
-        <p className="font-semibold">
-          <span className="text-lg font-semibold text-sky-100">
-            Replied By:
-          </span>
+      <div className="flex justify-between px-3 py-3 sm:px-6">
+        <p className="text-sm font-semibold sm:text-lg">
+          <span className="text-sky-100">Replied By: </span>
           {reply.replier}
         </p>
         <div>
           <span className="ms-5 text-sm">{timeModified(reply.created_at)}</span>
         </div>
       </div>
-      <div className="rounded-b-lg bg-gray-500 px-6 py-3">
-        <p className="whitespace-pre break-words">{reply.replyContent}</p>
+      <div className="rounded-b-lg bg-gray-500 px-3 py-3 sm:px-6">
+        <p className="whitespace-pre break-words text-sm sm:text-base">
+          {reply.replyContent}
+        </p>
         {username === reply.replier && (
           <div className="mt-5 flex justify-end gap-5">
             <FiEdit2 cursor={"pointer"} onClick={handleEdit} />

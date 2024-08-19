@@ -22,7 +22,7 @@ function PostDiscussion() {
 
   return (
     <>
-      <div className="mx-8 flex flex-col justify-center gap-8">
+      <div className="mx-0 flex h-full flex-col justify-center gap-8 overflow-y-auto sm:mx-8">
         <PostContent isPending={postLoading} posts={posts} />
         <div className="max-h-[calc(100vh-20rem)] overflow-auto">
           <PostReplies isPending={replyLoading} replies={replies} />

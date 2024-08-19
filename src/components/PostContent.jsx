@@ -38,15 +38,15 @@ export default function PostContent({ isPending, posts }) {
   return (
     <div className="w-full rounded-lg bg-gray-700">
       {/* Post Header */}
-      <div className="flex justify-between border-b border-gray-600 px-6 py-3">
-        <p className="font-semibold">
-          <span className="text-lg font-semibold text-sky-100">
+      <div className="flex flex-wrap justify-between border-b border-gray-600 px-3 py-3 sm:px-6">
+        <p className="mb-2 font-semibold sm:mb-0">
+          <span className="text-base font-semibold text-sky-100 sm:text-lg">
             {postCreator} :{" "}
           </span>
           {postName}
         </p>
         <div className="flex items-center">
-          <span className="rounded-full bg-cyan-800 px-3 py-1 text-sm text-white">
+          <span className="rounded-full bg-cyan-800 px-3 py-1 text-sm text-white sm:text-base">
             {postSection}
           </span>
           <span className="ml-5 text-sm text-gray-400">
@@ -55,8 +55,10 @@ export default function PostContent({ isPending, posts }) {
         </div>
       </div>
       {/* Post Body */}
-      <div className="px-6 py-3">
-        <p className="whitespace-pre-wrap break-words">{postContent}</p>
+      <div className="px-3 py-3 sm:px-6">
+        <p className="whitespace-pre-wrap break-words text-sm sm:text-base">
+          {postContent}
+        </p>
         {username === postCreator && (
           <div className="mt-5 flex justify-end gap-5 text-white">
             <FiEdit2 cursor="pointer" onClick={handleEdit} />
