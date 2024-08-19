@@ -23,12 +23,15 @@ function TopicCreateForm() {
   }
 
   return (
-    <div className="mx-24 rounded-lg bg-gray-800">
-      <p className="rounded-t-lg bg-gray-700 py-2 text-center text-2xl">
+    <div className="mx-0 rounded-lg bg-gray-800 sm:mx-24">
+      <p className="rounded-t-lg bg-gray-700 py-2 text-center text-lg sm:text-2xl">
         Create Post
       </p>
-      <form className="px-20 py-10" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-5 flex justify-between gap-28">
+      <form
+        className="px-4 py-4 sm:px-20 sm:py-10"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="mb-5 flex justify-between gap-5 sm:gap-28">
           <Input
             label="Post Name"
             id="postName"
