@@ -11,12 +11,12 @@ export default function ForumTableRow({ post }) {
   }
   return (
     <tr
-      className="cursor-pointer border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
+      className="cursor-pointer border-b border-gray-700 bg-gray-800 hover:bg-gray-600"
       onClick={handleClick}
     >
       <th
         scope="row"
-        className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+        className="whitespace-nowrap px-6 py-4 font-medium text-white"
       >
         {postName}
       </th>
