@@ -7,7 +7,7 @@ function Post() {
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-2xl font-semibold text-white">
           Discover Topics of your likings
         </h1>
         <ForumTable />

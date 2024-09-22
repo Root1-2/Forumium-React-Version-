@@ -6,25 +6,27 @@ import banner from "../images/bannerImg.png";
 
 function Homepage() {
   return (
-    <div className="flex h-screen flex-wrap items-center justify-between gap-10 overflow-y-auto px-0 pb-52 sm:gap-0 sm:px-20">
+    <div className="flex h-screen flex-wrap items-center justify-between gap-10 overflow-y-auto px-0 pb-48 sm:gap-0 sm:px-20">
       <div className="w-[50rem]">
-        <Logo />
-        <h1 className="my-4 text-3xl font-semibold text-white sm:text-6xl">
+        <div className="hidden sm:block">
+          <Logo />
+        </div>
+        <h1 className="my-4 text-center text-3xl font-semibold text-white sm:text-6xl md:text-start">
           Connectivity is the Key
         </h1>
-        <p className="mb-5 text-xl text-white">
+        <p className="mb-5 text-center text-xl text-white md:text-start">
           A Forum web application for user to create discussion with other
           users. Contains varietys of user discussion topics for you to interact
           with other
         </p>
         <NavLink to="/post">
-          <Button>Browse Topics</Button>
+          <div className="flex justify-center sm:justify-start">
+            <Button>Browse Topics</Button>
+          </div>
         </NavLink>
       </div>
 
-      <div>
-        <img src={banner} className="ms-16 w-56 sm:ms-0" alt="banner" />
-      </div>
+      <img src={banner} className="ms-16 w-56 sm:ms-20" alt="banner" />
     </div>
   );
 }
