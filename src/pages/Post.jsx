@@ -6,11 +6,13 @@ import ButtonIcon from "../ui/ButtonIcon";
 function Post() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-2xl font-semibold text-white">
+      <div className="h-screen overflow-y-auto">
+        <h1 className="my-5 text-center text-2xl font-semibold text-white">
           Discover Topics of your likings
         </h1>
-        <ForumTable />
+        <div className="flex justify-center">
+          <ForumTable />
+        </div>
       </div>
       <div className="fixed bottom-0 right-0 h-20 w-20">
         <NavLink to="/post/new">
